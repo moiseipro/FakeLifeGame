@@ -71,7 +71,7 @@ public class CameraRotateAround : MonoBehaviour {
 		}*/
 
 		yDeg = ClampAngle (yDeg, yMinLimit, yMaxLimit);
-
+		Debug.Log (""+yDeg);
 		// Установка значения вращения камеры
 		Quaternion rotation = Quaternion.Euler (yDeg, xDeg, 0);
 
@@ -104,8 +104,12 @@ public class CameraRotateAround : MonoBehaviour {
 		// Ограничение дистанции камеры
 		currentDistance = Mathf.Clamp (currentDistance, minDistance, maxDistance);
 
-		// Установка новой позиции камеры по текущему расстоянию  
-		position = target.position - (rotation * Vector3.forward * currentDistance + vTargetOffset);
+		// Установка новой позиции камеры по текущему расстоянию 
+		float yDegOff;
+		if (yDeg > 0)
+			yDegOff = yDeg / 70f;
+		else yDegOff = -yDeg / 100f;
+		position = target.position - (rotation * Vector3.forward * (currentDistance - yDegOff) + vTargetOffset);
 
 		transform.rotation = rotation;
 		transform.position = position;
