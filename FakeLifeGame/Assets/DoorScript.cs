@@ -12,7 +12,10 @@ public class DoorScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player") _animator.SetBool("IsDoorOpen", true);
+        if (other.tag == "Player")
+        {
+            _animator.SetBool("IsDoorOpen", true);
+        }
     }
 
     // Update is called once per frame
