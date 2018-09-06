@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveHero : MonoBehaviour {
 
 	Rigidbody rigidbody;
+	public float JumpSpeed = 1.0f;
 	public float speed = 1.0f;
 	public float turnSpeed;
 	public Transform PosTarget;
@@ -20,6 +21,9 @@ public class MoveHero : MonoBehaviour {
 		Vector3 dir = PosTarget.position - transform.position;
 		dir.y = 0;
 		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (dir), turnSpeed * Time.deltaTime);
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			rigidbody.AddForce(Vector3.up * speed, ForceMode.Impulse);
+		}
 	}
 
 	void FixedUpdate()
