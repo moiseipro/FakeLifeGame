@@ -99,10 +99,12 @@ MonoBehaviour:
   m_WaterMode: 2
   m_DisablePixelLights: 1
   m_TextureSize: 256
-  m_ClipPlaneOffset: 0.07
+  m_ClipPlaneOffset: .0700000003
   m_ReflectLayers:
+    serializedVersion: 2
     m_Bits: 4294967295
   m_RefractLayers:
+    serializedVersion: 2
     m_Bits: 4294967295
 --- !u!1002 &11400001
 EditorExtensionImpl:

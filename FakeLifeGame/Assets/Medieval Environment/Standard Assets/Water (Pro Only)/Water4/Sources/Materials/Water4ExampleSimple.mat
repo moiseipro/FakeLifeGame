@@ -60,6 +60,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _FresnelScale: 0.3897143
+    - _GerstnerIntensity: 1
     - _HeightDisplacement: 2.3370318
     - _NormalsDisplacement: 72.72728
     - _Shininess: 349.13794

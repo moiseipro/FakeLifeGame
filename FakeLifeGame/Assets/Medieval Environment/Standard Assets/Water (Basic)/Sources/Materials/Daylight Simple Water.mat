@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorControlCube:
-        m_Texture: {fileID: 8900000, guid: b8e0cf1788e6bf04eb89c981f2927d42, type: 3}
+        m_Texture: {fileID: 8900000, guid: 98c330f39d11745ad0004adb8d76c639, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorGradient:
@@ -55,7 +55,7 @@ Material:
     - _BumpPeturb2: 0.745283
     - _Highlight: 33.207546
     - _Shininess: 1
-    - _WaveScale: 0.030283019
+    - _WaveScale: 0.07028302
     - _bScale: 0.07
     - _bTwirl: 0.05
     - _distort: 0.1
@@ -74,7 +74,7 @@ Material:
     - _RefTex_3: {r: 4.955955, g: -0.18703793, b: -13.38207, a: 20.221354}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 0.4}
     - _WaveSpeed: {r: 1, g: -1, b: -1, a: 1}
-    - _horizonColor: {r: 0.67910445, g: 0.67910445, b: 0.67910445, a: 0}
+    - _horizonColor: {r: 0, g: 0.12513366, b: 0.19117647, a: 0}
     - horizonColor: {r: 0.615, g: 0.796, b: 0.876, a: 1}
     - uvParams: {r: 10, g: 0.02, b: 0.03, a: 0}
     - waveDirX: {r: -2.5, g: 0, b: 7, a: 8}

@@ -52,7 +52,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: ae162c0523ab4468bb03ef160eb672e2, type: 2}
+  - {fileID: 2100000, guid: 7350b65a6431f604a8496c39db1ac9c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,10 +99,12 @@ MonoBehaviour:
   m_WaterMode: 2
   m_DisablePixelLights: 1
   m_TextureSize: 256
-  m_ClipPlaneOffset: 0.07
+  m_ClipPlaneOffset: .0700000003
   m_ReflectLayers:
+    serializedVersion: 2
     m_Bits: 4294967295
   m_RefractLayers:
+    serializedVersion: 2
     m_Bits: 4294967295
 --- !u!1002 &11400001
 EditorExtensionImpl:
