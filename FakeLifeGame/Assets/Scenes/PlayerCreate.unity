@@ -209,8 +209,8 @@ MonoBehaviour:
   offsetFromWall: 0.4
   maxDistance: 1.6
   minDistance: 1.6
-  xSpeed: 200
-  ySpeed: 200
+  xSpeed: 150
+  ySpeed: 150
   yMinLimit: -50
   yMaxLimit: 75
   zoomRate: 40
@@ -541,7 +541,7 @@ MonoBehaviour:
   lookIKweight: 1
   eyesWeight: 1
   headWeight: 1
-  bodyWeight: 0.6
+  bodyWeight: 0.15
   clampWeight: 1
   targetPos: {fileID: 451566244}
   angularSpeed: 2
@@ -718,6 +718,11 @@ Prefab:
         type: 2}
       propertyPath: m_Height
       value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 54498748416596506, guid: 73fb4b1bb90db734096f8fb9a97a3065,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73fb4b1bb90db734096f8fb9a97a3065, type: 2}

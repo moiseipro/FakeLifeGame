@@ -71,7 +71,7 @@ public class CameraRotateAround : MonoBehaviour {
 		}*/
 
 		yDeg = ClampAngle (yDeg, yMinLimit, yMaxLimit);
-		Debug.Log (""+yDeg);
+		//Debug.Log (""+yDeg);
 		// Установка значения вращения камеры
 		Quaternion rotation = Quaternion.Euler (yDeg, xDeg, 0);
 

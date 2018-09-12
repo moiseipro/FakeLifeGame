@@ -29,6 +29,12 @@ public class IKanims : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		float Vert = Input.GetAxis ("Vertical");
+		float Horiz = Input.GetAxis ("Horizontal");
+
+		anim.SetFloat ("Walk", Vert);
+		anim.SetFloat ("Strafe", Horiz);
+
 		Vector3 rot = transform.eulerAngles;
 		transform.LookAt (targetPos.position);
 
@@ -39,8 +45,16 @@ public class IKanims : MonoBehaviour {
 		if (isPlayRot == true) {
 			float bodyY = Mathf.LerpAngle (rot.y, transform.eulerAngles.y, angularSpeed * Time.deltaTime);
 			transform.eulerAngles = new Vector3 (rot.x, bodyY, rot.z);
+
+			if (Vert == 0 && Horiz == 0) {
+				anim.SetBool ("Turn", true);
+			} else {
+				anim.SetBool ("Turn", false);
+			}
+
 			if (Mathf.Abs (angleBetween) * Mathf.Deg2Rad <= Time.deltaTime * angularSpeed) {
 				isPlayRot = false;
+				anim.SetBool ("Turn", false);
 			}
 		} else {
 			transform.eulerAngles = rot;

@@ -5,22 +5,26 @@ using UnityEngine;
 public class MoveHero : MonoBehaviour {
 
 	Rigidbody rigidbody;
+	Animator anim;
 	public float JumpSpeed = 1.0f;
 	public float speed = 1.0f;
+	public float MaxSpeed = 2f;
 	public float turnSpeed;
 	public Transform PosTarget;
 	public Camera camera;
 	public Vector3 SumVect;
 
+
 	// Use this for initialization
 	void Start () {
 		rigidbody = GetComponent<Rigidbody> ();
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 dir = PosTarget.position - transform.position;
-		dir.y = 0;
+		//Vector3 dir = PosTarget.position - transform.position;
+		//dir.y = 0;
 		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (dir), turnSpeed * Time.deltaTime);
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			rigidbody.AddForce(Vector3.up * JumpSpeed, ForceMode.Impulse);
@@ -34,10 +38,12 @@ public class MoveHero : MonoBehaviour {
 		float verticalAxis = Input.GetAxis("Vertical");
 
 		SumVect = (transform.right * horizontalAxis) + (transform.forward * verticalAxis);
-		SumVect.Normalize ();
+		//SumVect.Normalize ();
 		Debug.Log ("Speed: " + rigidbody.velocity.magnitude);
 
-		rigidbody.AddForce(SumVect * speed / Time.deltaTime);
+		if (rigidbody.velocity.magnitude < MaxSpeed) {
+			rigidbody.AddForce(SumVect * speed / Time.deltaTime);
+		}
 
 	}
 
