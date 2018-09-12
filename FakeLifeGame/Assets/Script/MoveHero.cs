@@ -14,11 +14,13 @@ public class MoveHero : MonoBehaviour {
 	public Camera camera;
 	public Vector3 SumVect;
 
+	GameObject ButText;
 
 	// Use this for initialization
 	void Start () {
 		rigidbody = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
+		ButText = GameObject.Find ("SpaceButText");
 	}
 	
 	// Update is called once per frame
@@ -26,9 +28,24 @@ public class MoveHero : MonoBehaviour {
 		//Vector3 dir = PosTarget.position - transform.position;
 		//dir.y = 0;
 		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (dir), turnSpeed * Time.deltaTime);
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			rigidbody.AddForce(Vector3.up * JumpSpeed, ForceMode.Impulse);
+		RaycastHit leftHit;
+
+		if (Physics.Raycast (transform.position + Vector3.up * 0.2f, transform.forward, out leftHit, 1.1f)) {
+			if (leftHit.collider.tag == "Pregrada") {
+				ButText.SetActive (true);
+				if (Input.GetKeyDown (KeyCode.Space)) {
+					//rigidbody.AddForce (Vector3.up * JumpSpeed, ForceMode.Impulse);
+					anim.SetBool ("Jump", true);
+					ButText.SetActive (false);
+				} 
+			} else ButText.SetActive (false);
+			Debug.DrawLine (transform.position + Vector3.up * 0.2f, transform.position + transform.forward + Vector3.up * 0.2f, Color.blue, 1f);
+		} else {
+			anim.SetBool ("Jump", false);
+			ButText.SetActive (false);
 		}
+
+
 	}
 
 	void FixedUpdate()
