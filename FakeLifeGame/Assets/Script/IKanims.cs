@@ -17,13 +17,26 @@ public class IKanims : MonoBehaviour {
 	bool isPlayRot;
 	public float luft;
 
+	Vector3 leftFootPos;
+	Vector3 rightFootPos;
+	Quaternion leftFootRot;
+	Quaternion rightFootRot;
+	float leftFootWeight;
+	float rightFootWeight;
 
+	Transform leftFoot;
+	Transform rightFoot;
 
+	public float offsetYfoot;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
 
+		leftFoot = anim.GetBoneTransform (HumanBodyBones.LeftFoot);
+		leftFootRot = leftFoot.rotation;
+		rightFoot = anim.GetBoneTransform (HumanBodyBones.RightFoot);
+		rightFootRot = rightFoot.rotation;
 	}
 	
 	// Update is called once per frame
@@ -31,6 +44,8 @@ public class IKanims : MonoBehaviour {
 
 		float Vert = Input.GetAxis ("Vertical");
 		float Horiz = Input.GetAxis ("Horizontal");
+
+		FootIK ();
 
 		anim.SetFloat ("Walk", Vert);
 		anim.SetFloat ("Strafe", Horiz);
@@ -62,10 +77,42 @@ public class IKanims : MonoBehaviour {
 
 	}
 
-	void OnAnimatorIK(){
+	void FootIK(){
+		RaycastHit leftHit;
+		Vector3 lpos = leftFoot.position;
+		if (Physics.Raycast (lpos + Vector3.up * 0.5f, Vector3.down, out leftHit, 1)) {
+			leftFootPos = Vector3.Lerp (lpos, leftHit.point + Vector3.up * offsetYfoot, Time.deltaTime * 20f);
+			leftFootRot = Quaternion.FromToRotation(transform.up,leftHit.normal) * transform.rotation;
+			Debug.DrawLine (lpos + Vector3.up * 0.5f, leftFootPos, Color.red, 1f);
+			//Debug.Log (leftHit.collider);
+		}
+		RaycastHit rightHit;
+		Vector3 rpos = rightFoot.position;
+		if (Physics.Raycast (rpos + Vector3.up * 0.5f, Vector3.down, out rightHit, 1)) {
+			rightFootPos = Vector3.Lerp (rpos, rightHit.point + Vector3.up * offsetYfoot, Time.deltaTime * 20f);
+			rightFootRot = Quaternion.FromToRotation(transform.up,rightHit.normal) * transform.rotation;
+			Debug.DrawLine (rpos + Vector3.up * 0.5f, rightFootPos, Color.red, 1f);
+			//Debug.Log (rightHit.collider);
+		}
+	}
 
+	void OnAnimatorIK(){
 		anim.SetLookAtWeight (lookIKweight, bodyWeight, headWeight, eyesWeight, clampWeight);
 		anim.SetLookAtPosition (targetPos.position);
+
+		leftFootWeight = anim.GetFloat ("LeftFoot");
+		anim.SetIKPositionWeight (AvatarIKGoal.LeftFoot, leftFootWeight);
+		anim.SetIKPosition(AvatarIKGoal.LeftFoot, leftFootPos);
+
+		anim.SetIKRotationWeight (AvatarIKGoal.LeftFoot, leftFootWeight);
+		anim.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootRot);
+
+		rightFootWeight = anim.GetFloat ("RightFoot");
+		anim.SetIKPositionWeight (AvatarIKGoal.RightFoot, rightFootWeight);
+		anim.SetIKPosition(AvatarIKGoal.RightFoot, rightFootPos);
+
+		anim.SetIKRotationWeight (AvatarIKGoal.RightFoot, rightFootWeight);
+		anim.SetIKRotation(AvatarIKGoal.RightFoot, rightFootRot);
 	
 	}
 
