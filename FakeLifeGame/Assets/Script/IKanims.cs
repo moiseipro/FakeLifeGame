@@ -5,6 +5,7 @@ using UnityEngine;
 public class IKanims : MonoBehaviour {
 
 	Animator anim;
+	public float RunWeight;
 
 	public float lookIKweight;
 	public float eyesWeight;
@@ -47,8 +48,17 @@ public class IKanims : MonoBehaviour {
 
 		FootIK ();
 
-		anim.SetFloat ("Walk", Vert);
-		anim.SetFloat ("Strafe", Horiz);
+
+
+		if (Vert != 0 || Horiz != 0) {
+			if (Input.GetKey (KeyCode.LeftShift)) {
+				RunWeight = Mathf.Lerp (RunWeight, 1f, Time.deltaTime * 5f);
+				anim.SetLayerWeight (1, RunWeight);
+			} else {
+				RunWeight = Mathf.Lerp (RunWeight, 0f, Time.deltaTime * 5f);
+				anim.SetLayerWeight (1, RunWeight);
+			}
+		}
 
 		Vector3 rot = transform.eulerAngles;
 		transform.LookAt (targetPos.position);

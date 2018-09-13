@@ -14,6 +14,15 @@ public class MoveHero : MonoBehaviour {
 	public Camera camera;
 	public Vector3 SumVect;
 
+	public KeyCode up;
+	public KeyCode down;
+	public KeyCode left;
+	public KeyCode right;
+
+	public float SpeedAxis = 8f;
+	float x = 0;
+	float y = 0;
+
 	GameObject ButText;
 
 	// Use this for initialization
@@ -22,14 +31,19 @@ public class MoveHero : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		ButText = GameObject.Find ("SpaceButText");
 	}
+
+	void OnCollisionEnter(Collision collision) {
+		
+	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Vector3 dir = PosTarget.position - transform.position;
 		//dir.y = 0;
 		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (dir), turnSpeed * Time.deltaTime);
-		RaycastHit leftHit;
 
+
+		RaycastHit leftHit;
 		if (Physics.Raycast (transform.position + Vector3.up * 0.2f, transform.forward, out leftHit, 1.1f)) {
 			if (leftHit.collider.tag == "Pregrada") {
 				ButText.SetActive (true);
@@ -38,7 +52,10 @@ public class MoveHero : MonoBehaviour {
 					anim.SetBool ("Jump", true);
 					ButText.SetActive (false);
 				} 
-			} else ButText.SetActive (false);
+			} else {
+				anim.SetBool ("Jump", false);
+				ButText.SetActive (false);
+			}
 			Debug.DrawLine (transform.position + Vector3.up * 0.2f, transform.position + transform.forward + Vector3.up * 0.2f, Color.blue, 1f);
 		} else {
 			anim.SetBool ("Jump", false);
@@ -54,7 +71,23 @@ public class MoveHero : MonoBehaviour {
 		float horizontalAxis = Input.GetAxis("Horizontal");
 		float verticalAxis = Input.GetAxis("Vertical");
 
-		SumVect = (transform.right * horizontalAxis) + (transform.forward * verticalAxis);
+
+		if (Input.GetKey (up)) {
+			x = Mathf.Lerp (x, 1f, Time.deltaTime * SpeedAxis);
+		} else if (Input.GetKey (down)) {
+			x = Mathf.Lerp (x, -1f, Time.deltaTime * SpeedAxis);
+		} else x = Mathf.Lerp (x, 0, Time.deltaTime * SpeedAxis);
+
+		if (Input.GetKey (left)) {
+			y = Mathf.Lerp (y, -1f, Time.deltaTime * SpeedAxis);
+		} else if (Input.GetKey (right)) {
+			y = Mathf.Lerp (y, 1f, Time.deltaTime * SpeedAxis);
+		} else y = Mathf.Lerp (y, 0, Time.deltaTime * SpeedAxis);
+
+		anim.SetFloat ("Walk", x);
+		anim.SetFloat ("Strafe", y);
+
+		SumVect = (transform.right * x) + (transform.forward * y);
 		//SumVect.Normalize ();
 		Debug.Log ("Speed: " + rigidbody.velocity.magnitude);
 
