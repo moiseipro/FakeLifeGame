@@ -1641,8 +1641,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -387, y: -267}
-  m_SizeDelta: {x: 299.2, y: 71.6}
+  m_AnchoredPosition: {x: -387, y: -244.6}
+  m_SizeDelta: {x: 299.2, y: 116.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485481150
 MonoBehaviour:
@@ -1675,8 +1675,12 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 2
-  m_Text: Hold Space for jump
+    m_LineSpacing: 1.07
+  m_Text: 'Space - jump
+
+    Mouse1 - cast rune
+
+    Shift - run'
 --- !u!222 &1485481151
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1827,19 +1831,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878131228}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f6d6cae6c9c214dbdd9352f256ccc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 82bd18991f79e4f42a90c838a5cc1059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetYfoot: 0
-  offsetYhand: 0
-  lookIKweight: 0
-  eyesWeight: 0
-  headWeight: 0
-  bodyWeight: 0
-  clampWeight: 0
-  targetPos: {fileID: 396376986}
+  Rune: {fileID: 1802875452627940, guid: 4b709ec16b0d0614f89fa03036526b7c, type: 2}
 --- !u!1001 &1957890705
 Prefab:
   m_ObjectHideFlags: 0

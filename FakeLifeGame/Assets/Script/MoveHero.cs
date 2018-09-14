@@ -15,9 +15,6 @@ public class MoveHero : MonoBehaviour {
 	public Camera camera;
 	public Vector3 SumVect;
 
-
-
-
 	GameObject ButText;
 	RaycastHit Hit;
 
@@ -61,8 +58,6 @@ public class MoveHero : MonoBehaviour {
 			anim.SetBool ("Jump", false);
 			anim.SetBool ("Jump over", false);
 		}
-
-
 
 		/*Запасной вариант просчета падений
 		if (Physics.Raycast (transform.position + Vector3.up * 0.65f, Vector3.down * 0.6f + transform.forward * 0.65f, out leftHit, 1.5f)) {
