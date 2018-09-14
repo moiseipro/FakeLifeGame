@@ -26,7 +26,7 @@ public class Magic : MonoBehaviour {
 	private IEnumerator Cast(float CastTime){
 		anim.SetInteger ("Cast", 1);
 		yield return new WaitForSeconds(CastTime);
-		Instantiate (Rune,transform.position,transform.rotation);
+		Instantiate (Rune,transform.position,Rune.transform.rotation);
 		anim.SetInteger ("Cast", 0);
 	}
 
