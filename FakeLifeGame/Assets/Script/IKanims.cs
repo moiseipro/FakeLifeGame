@@ -5,6 +5,8 @@ using UnityEngine;
 public class IKanims : MonoBehaviour {
 
 	Animator anim;
+	public bool PlayerJump = false;
+
 	public float RunWeight;
 
 	public float lookIKweight;
@@ -30,6 +32,16 @@ public class IKanims : MonoBehaviour {
 
 	public float offsetYfoot;
 
+	public KeyCode up;
+	public KeyCode down;
+	public KeyCode left;
+	public KeyCode right;
+
+	public float SpeedAxisY = 8f;
+	public float SpeedAxisX = 8f;
+	float x = 0;
+	float y = 0;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -38,6 +50,19 @@ public class IKanims : MonoBehaviour {
 		leftFootRot = leftFoot.rotation;
 		rightFoot = anim.GetBoneTransform (HumanBodyBones.RightFoot);
 		rightFootRot = rightFoot.rotation;
+	}
+
+	void OnTriggerStay(Collider col) {
+		if (col.tag == "hop down low" && x >= 0.99f) {
+			anim.SetBool ("Down", true);
+			gameObject.GetComponent<IKanims> ().PlayerJump = true;
+		}
+	}
+	void OnTriggerExit(Collider col) {
+		if (col.tag == "hop down low") {
+			anim.SetBool ("Down", false);
+			gameObject.GetComponent<IKanims> ().PlayerJump = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -48,16 +73,27 @@ public class IKanims : MonoBehaviour {
 
 		FootIK ();
 
+		if (Input.GetKey (up)) {
+			x = Mathf.Lerp (x, 1f, Time.deltaTime * SpeedAxisX);
+		} else if (Input.GetKey (down)) {
+			x = Mathf.Lerp (x, -1f, Time.deltaTime * SpeedAxisX);
+		} else x = Mathf.Lerp (x, 0, Time.deltaTime * SpeedAxisX);
 
+		if (Input.GetKey (left)) {
+			y = Mathf.Lerp (y, -1f, Time.deltaTime * SpeedAxisY);
+		} else if (Input.GetKey (right)) {
+			y = Mathf.Lerp (y, 1f, Time.deltaTime * SpeedAxisY);
+		} else y = Mathf.Lerp (y, 0, Time.deltaTime * SpeedAxisY);
 
-		if (Vert != 0 || Horiz != 0) {
-			if (Input.GetKey (KeyCode.LeftShift)) {
-				RunWeight = Mathf.Lerp (RunWeight, 1f, Time.deltaTime * 5f);
+		anim.SetFloat ("Walk", x);
+		anim.SetFloat ("Strafe", y);
+
+		if ((Vert != 0 || Horiz != 0) && Input.GetKey (KeyCode.LeftShift) && (anim.GetFloat ("Fall") <= 0.1 && anim.GetFloat ("Fall") >= -0.1)) {
+				RunWeight = Mathf.Lerp (RunWeight, 1f, Time.deltaTime * 3f);
 				anim.SetLayerWeight (1, RunWeight);
-			} else {
-				RunWeight = Mathf.Lerp (RunWeight, 0f, Time.deltaTime * 5f);
-				anim.SetLayerWeight (1, RunWeight);
-			}
+		} else if (anim.GetFloat ("Fall") <= 0.2 && anim.GetFloat ("Fall") >= -0.2){
+			RunWeight = Mathf.Lerp (RunWeight, 0f, Time.deltaTime * 3f);
+			anim.SetLayerWeight (1, RunWeight);
 		}
 
 		Vector3 rot = transform.eulerAngles;
@@ -67,14 +103,14 @@ public class IKanims : MonoBehaviour {
 		if(Mathf.Abs(angleBetween) > luft || gameObject.GetComponent<MoveHero> ().SumVect != Vector3.zero){
 			isPlayRot = true;
 		}
-		if (isPlayRot == true) {
+		if (isPlayRot == true && PlayerJump == false) {
 			float bodyY = Mathf.LerpAngle (rot.y, transform.eulerAngles.y, angularSpeed * Time.deltaTime);
 			transform.eulerAngles = new Vector3 (rot.x, bodyY, rot.z);
 
-			if (Vert == 0 && Horiz == 0) {
-				anim.SetBool ("Turn", true);
+			if ((x >= -0.1f && x <= 0.1f) && (y >= -0.1f && y <= 0.1f)) {
+				//anim.SetBool ("Turn", true);
 			} else {
-				anim.SetBool ("Turn", false);
+				//anim.SetBool ("Turn", false);
 			}
 
 			if (Mathf.Abs (angleBetween) * Mathf.Deg2Rad <= Time.deltaTime * angularSpeed) {
@@ -84,6 +120,11 @@ public class IKanims : MonoBehaviour {
 		} else {
 			transform.eulerAngles = rot;
 		}
+		//Debug.Log ("X: " + x + " Y:" + y);
+	}
+
+	void FixedUpdate(){
+		
 
 	}
 
@@ -93,7 +134,7 @@ public class IKanims : MonoBehaviour {
 		if (Physics.Raycast (lpos + Vector3.up * 0.5f, Vector3.down, out leftHit, 1)) {
 			leftFootPos = Vector3.Lerp (lpos, leftHit.point + Vector3.up * offsetYfoot, Time.deltaTime * 20f);
 			leftFootRot = Quaternion.FromToRotation(transform.up,leftHit.normal) * transform.rotation;
-			Debug.DrawLine (lpos + Vector3.up * 0.5f, leftFootPos, Color.red, 1f);
+			//Debug.DrawLine (lpos + Vector3.up * 0.5f, leftFootPos, Color.red, 1f);
 			//Debug.Log (leftHit.collider);
 		}
 		RaycastHit rightHit;
@@ -101,7 +142,7 @@ public class IKanims : MonoBehaviour {
 		if (Physics.Raycast (rpos + Vector3.up * 0.5f, Vector3.down, out rightHit, 1)) {
 			rightFootPos = Vector3.Lerp (rpos, rightHit.point + Vector3.up * offsetYfoot, Time.deltaTime * 20f);
 			rightFootRot = Quaternion.FromToRotation(transform.up,rightHit.normal) * transform.rotation;
-			Debug.DrawLine (rpos + Vector3.up * 0.5f, rightFootPos, Color.red, 1f);
+			//Debug.DrawLine (rpos + Vector3.up * 0.5f, rightFootPos, Color.red, 1f);
 			//Debug.Log (rightHit.collider);
 		}
 	}
