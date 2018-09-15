@@ -17,8 +17,10 @@ public class Magic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Mouse0)) {
-			StartCoroutine (Cast (2f));
+		if (Input.GetKeyDown (KeyCode.Mouse0)){
+			if (anim.GetInteger ("Cast") == 0) {
+				StartCoroutine (Cast (2f));
+			}
 		}
 
 	}

@@ -265,8 +265,8 @@ MonoBehaviour:
   targetHeight: 0.7
   distance: 2
   offsetFromWall: 0.4
-  maxDistance: 1.6
-  minDistance: 1.6
+  maxDistance: 1.7
+  minDistance: 1.7
   xSpeed: 150
   ySpeed: 150
   yMinLimit: -50
