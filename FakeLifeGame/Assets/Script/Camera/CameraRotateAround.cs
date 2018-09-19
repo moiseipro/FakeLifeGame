@@ -32,6 +32,8 @@ public class CameraRotateAround : MonoBehaviour {
 	private float desiredDistance;
 	private float correctedDistance;
 
+	public bool CameraActive;
+
 	void Start ()
 	{
 		Vector3 angles = transform.eulerAngles;
@@ -57,11 +59,11 @@ public class CameraRotateAround : MonoBehaviour {
 			return;
 
 		// Можно настроить поворот камеры на нажатие клавиши
-		//if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-		//{
+		if (CameraActive)
+		{
 			xDeg += Input.GetAxis ("Mouse X") * xSpeed * 0.02f;
 			yDeg -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
-		//}
+		}
 		// Плавное перемещение камеры в направление движения персонажа
 		/* if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
 		{

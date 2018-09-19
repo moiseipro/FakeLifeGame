@@ -8,7 +8,10 @@ public class Magic : MonoBehaviour {
 	public GameObject[] Rune;
 	public GameObject[] Spell;
 	public int SpellID;
+	public float CastTime = 2.1f;
 	public bool MoveCast;
+
+	public bool CastActive;
 
 	// Use this for initialization
 	void Start () {
@@ -20,17 +23,11 @@ public class Magic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Mouse1)) {
-			SpellID += 1;
-			if (SpellID > 2)
-				SpellID = 1;
-		}
-
-		if (Input.GetKeyDown (KeyCode.Mouse0)){
+		if ((Input.GetKeyDown (KeyCode.Mouse0))&& CastActive){
 			if (anim.GetInteger ("Cast") == 0) {
 				if(SpellID == 2) MoveCast = true;
 				else MoveCast = false;
-				StartCoroutine (Cast (2f));
+				StartCoroutine (Cast (CastTime, SpellID));
 			}
 		}
 
@@ -44,17 +41,19 @@ public class Magic : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator Cast(float CastTime){
-		anim.SetInteger ("Cast", SpellID);
+	private IEnumerator Cast(float CastTime, int ID){
+		anim.SetInteger ("Cast", ID);
 		yield return new WaitForSeconds(CastTime);
-		if (SpellID == 1)
+		if (ID == 1)
 			Instantiate (Rune [0], transform.position, Rune [0].transform.rotation);
-		else if (SpellID == 2) {
+		else if (ID == 2) {
 			GameObject FireBall = Instantiate (Spell [0], transform.position + GameObject.Find("Main Camera").transform.forward + Vector3.up, GameObject.Find("Main Camera").transform.rotation);
 			FireBall.GetComponent<Rigidbody> ().AddForce ((FireBall.transform.forward + Vector3.up*0.2f) * 10f, ForceMode.Impulse);
 		}
 		MoveCast = false;
 		anim.SetInteger ("Cast", 0);
 	}
+
+
 
 }
