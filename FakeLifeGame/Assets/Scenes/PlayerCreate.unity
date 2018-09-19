@@ -266,7 +266,7 @@ MonoBehaviour:
   distance: 2
   offsetFromWall: 0.4
   maxDistance: 1.7
-  minDistance: 1.7
+  minDistance: 0
   xSpeed: 150
   ySpeed: 150
   yMinLimit: -50
@@ -1639,10 +1639,10 @@ RectTransform:
   m_Father: {fileID: 987385904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -387, y: -244.6}
-  m_SizeDelta: {x: 299.2, y: 116.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 159, y: 69.59}
+  m_SizeDelta: {x: 299.2, y: 130.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485481150
 MonoBehaviour:
@@ -1678,9 +1678,11 @@ MonoBehaviour:
     m_LineSpacing: 1.07
   m_Text: 'Space - jump
 
-    Mouse1 - cast rune
+    Mouse1 - cast
 
-    Shift - run'
+    Shift - run
+
+    Mouse2 - Change cast'
 --- !u!222 &1485481151
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1817,8 +1819,9 @@ MonoBehaviour:
   clampWeight: 1
   targetPos: {fileID: 451566244}
   angularSpeed: 3
-  luft: 100
+  luft: 80
   offsetYfoot: 0
+  MaxHandWaight: 0.1
   up: 119
   down: 115
   left: 97
@@ -1836,7 +1839,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bd18991f79e4f42a90c838a5cc1059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rune: {fileID: 1802875452627940, guid: 4b709ec16b0d0614f89fa03036526b7c, type: 2}
+  Rune:
+  - {fileID: 1802875452627940, guid: 4b709ec16b0d0614f89fa03036526b7c, type: 2}
+  Spell:
+  - {fileID: 1653460567463348, guid: 084d509908a9e5c41b3730052279cf44, type: 2}
+  SpellID: 2
+  MoveCast: 0
 --- !u!1001 &1957890705
 Prefab:
   m_ObjectHideFlags: 0
@@ -1904,7 +1912,7 @@ Prefab:
     - target: {fileID: 54498748416596506, guid: 73fb4b1bb90db734096f8fb9a97a3065,
         type: 2}
       propertyPath: m_Drag
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4968409675540320, guid: 73fb4b1bb90db734096f8fb9a97a3065, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1975,6 +1983,11 @@ Prefab:
         type: 2}
       propertyPath: SpeedAxisX
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 54498748416596506, guid: 73fb4b1bb90db734096f8fb9a97a3065,
+        type: 2}
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73fb4b1bb90db734096f8fb9a97a3065, type: 2}

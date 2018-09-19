@@ -32,6 +32,9 @@ public class IKanims : MonoBehaviour {
 
 	public float offsetYfoot;
 
+	float HandWaight;
+	public float MaxHandWaight;
+
 	public KeyCode up;
 	public KeyCode down;
 	public KeyCode left;
@@ -70,6 +73,12 @@ public class IKanims : MonoBehaviour {
 
 		float Vert = Input.GetAxis ("Vertical");
 		float Horiz = Input.GetAxis ("Horizontal");
+
+		if (GetComponent<Magic> ().MoveCast == true) {
+			HandWaight = Mathf.Lerp (HandWaight, MaxHandWaight, Time.deltaTime * 3f);
+		} else {
+			HandWaight = Mathf.Lerp (HandWaight, 0, Time.deltaTime * 3f);
+		}
 
 		FootIK ();
 
@@ -124,7 +133,20 @@ public class IKanims : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		
+
+		/*if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Move")) {
+			anim.applyRootMotion = false;
+		} else if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Down")) {
+			anim.applyRootMotion = true;
+		} else if (anim.GetCurrentAnimatorStateInfo (0).IsName ("CastRune")) {
+			anim.applyRootMotion = true;
+		} else if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Jump over")) {
+			anim.applyRootMotion = true;
+		} else if (anim.GetCurrentAnimatorStateInfo (0).IsName ("jump")) {
+			anim.applyRootMotion = true;
+		} else if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Fall")) {
+			anim.applyRootMotion = true;
+		}*/
 
 	}
 
@@ -164,6 +186,9 @@ public class IKanims : MonoBehaviour {
 
 		anim.SetIKRotationWeight (AvatarIKGoal.RightFoot, rightFootWeight);
 		anim.SetIKRotation(AvatarIKGoal.RightFoot, rightFootRot);
+
+		anim.SetIKPositionWeight (AvatarIKGoal.RightHand, HandWaight);
+		anim.SetIKPosition(AvatarIKGoal.RightHand, targetPos.position);
 	
 	}
 

@@ -23,6 +23,7 @@ public class MoveHero : MonoBehaviour {
 		rigidbody = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
 		ButText = GameObject.Find ("SpaceButText");
+		//anim.applyRootMotion = false;
 	}
 
 

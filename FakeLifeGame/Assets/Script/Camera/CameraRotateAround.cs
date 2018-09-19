@@ -76,7 +76,7 @@ public class CameraRotateAround : MonoBehaviour {
 		Quaternion rotation = Quaternion.Euler (yDeg, xDeg, 0);
 
 		// Расчет расстояния от камеры до цели
-		desiredDistance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs (desiredDistance);
+		//desiredDistance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs (desiredDistance);
 		desiredDistance = Mathf.Clamp (desiredDistance, minDistance, maxDistance);
 		correctedDistance = desiredDistance;
 
