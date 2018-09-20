@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveHero : MonoBehaviour {
 
 	Rigidbody rigidbody;
+	CharacterController ch;
 	Animator anim;
 
 	public float JumpSpeed = 1.0f;
@@ -12,17 +13,19 @@ public class MoveHero : MonoBehaviour {
 	public float MaxSpeed = 2f;
 	public float turnSpeed;
 	public Transform PosTarget;
-	public Camera camera;
-	public Vector3 SumVect;
+	public float Gravity = 10f;
+	private Vector3 GroundNormal; 
+	private float gravityForce;
 
 	GameObject ButText;
 	RaycastHit Hit;
 
 	// Use this for initialization
 	void Start () {
-		rigidbody = GetComponent<Rigidbody> ();
+		//rigidbody = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
 		ButText = GameObject.Find ("SpaceButText");
+		ch = GetComponent<CharacterController> ();
 		//anim.applyRootMotion = false;
 	}
 
@@ -33,11 +36,20 @@ public class MoveHero : MonoBehaviour {
 		//Vector3 dir = PosTarget.position - transform.position;
 		//dir.y = 0;
 		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (dir), turnSpeed * Time.deltaTime);
+		CheckGroundStatus();
+		//Debug.Log ("Down: " + anim.GetBool ("Down"));
+		if (anim.GetFloat ("JumpForce") == 0) {
+			PlayerGravity ();
+		} else {
+			gravityForce = anim.GetFloat ("JumpForce");
+		}
+		MoveCh ();
+
+
 
 		if (Physics.Raycast (transform.position + Vector3.up * 0.2f, transform.forward, out Hit, 1.1f)) {
 			if (Hit.collider.tag == "Pregrada") {
 				if (Input.GetKey (KeyCode.Space)) {
-					//rigidbody.AddForce (Vector3.up * JumpSpeed, ForceMode.Impulse);
 					anim.SetBool ("Jump", true);
 					if (gameObject.GetComponent<IKanims> ().RunWeight >= 0.6)
 						gameObject.GetComponent<IKanims> ().RunWeight = 1;
@@ -71,21 +83,66 @@ public class MoveHero : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		float horizontalAxis = Input.GetAxis("Horizontal");
+		//anim.SetFloat ("Fall", rigidbody.velocity.y); Не забыть переназначить падение на новую систему движения
+
+		/*float horizontalAxis = Input.GetAxis("Horizontal");
 		float verticalAxis = Input.GetAxis("Vertical");
 
-
-
-		anim.SetFloat ("Fall", rigidbody.velocity.y);
-
 		SumVect = (transform.right * horizontalAxis) + (transform.forward * verticalAxis);
-		//SumVect.Normalize ();
+		SumVect.Normalize ();
 		Debug.Log ("Speed: " + rigidbody.velocity);
 
 		if (rigidbody.velocity.magnitude < MaxSpeed) {
 			rigidbody.AddForce(SumVect * speed / Time.deltaTime);
-		}
+		}*/
 
+	}
+
+	void MoveCh(){
+		Vector3 moveVector = Vector3.zero;
+		moveVector.x = anim.GetFloat ("StrafeSpeed");
+		moveVector.z = anim.GetFloat ("Speed");
+		moveVector = transform.rotation * moveVector;
+		moveVector.y = gravityForce;
+
+		ch.Move (moveVector*Time.deltaTime);
+	}
+
+	void OnAnimatorMove()
+	{
+		if (anim.GetBool ("Jump")) {
+			//transform.position = anim.rootPosition;
+		}
+	}
+
+	private void PlayerGravity(){
+		if (!ch.isGrounded) {
+			gravityForce -= Gravity * Time.deltaTime;
+		} else {
+			gravityForce = 0f;
+			//anim.SetBool ("Jump", false);
+		}
+	}
+
+	void CheckGroundStatus()
+	{
+		RaycastHit hitInfo;
+
+		#if UNITY_EDITOR
+		Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.1f));
+		#endif
+
+		if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.2f))
+		{
+			GroundNormal = hitInfo.normal;
+			//Debug.Log ("GroundNormal: " + GroundNormal);
+			anim.applyRootMotion = true;
+		}
+		else
+		{
+			GroundNormal = Vector3.up;
+			anim.applyRootMotion = false;
+		}
 	}
 
 }

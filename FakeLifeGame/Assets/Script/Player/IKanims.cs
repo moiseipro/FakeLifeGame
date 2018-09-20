@@ -56,7 +56,7 @@ public class IKanims : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider col) {
-		if (col.tag == "hop down low" && x >= 0.99f) {
+		if (col.tag == "hop down low" && x>0.99f) {
 			anim.SetBool ("Down", true);
 			gameObject.GetComponent<IKanims> ().PlayerJump = true;
 		}
@@ -94,8 +94,11 @@ public class IKanims : MonoBehaviour {
 			y = Mathf.Lerp (y, 1f, Time.deltaTime * SpeedAxisY);
 		} else y = Mathf.Lerp (y, 0, Time.deltaTime * SpeedAxisY);
 
-		anim.SetFloat ("Walk", x);
-		anim.SetFloat ("Strafe", y);
+		x = (float)System.Math.Round (x,3);
+		y = (float)System.Math.Round (y,3);
+
+		anim.SetFloat ("Walk", x, 0.1f, Time.deltaTime);
+		anim.SetFloat ("Strafe", y, 0.1f, Time.deltaTime);
 
 		if ((Vert != 0 || Horiz != 0) && Input.GetKey (KeyCode.LeftShift) && (anim.GetFloat ("Fall") <= 0.1 && anim.GetFloat ("Fall") >= -0.1)) {
 				RunWeight = Mathf.Lerp (RunWeight, 1f, Time.deltaTime * 3f);
@@ -109,7 +112,7 @@ public class IKanims : MonoBehaviour {
 		transform.LookAt (targetPos.position);
 
 		float angleBetween = Mathf.DeltaAngle (transform.eulerAngles.y, rot.y);
-		if(Mathf.Abs(angleBetween) > luft || gameObject.GetComponent<MoveHero> ().SumVect != Vector3.zero){
+		if(Mathf.Abs(angleBetween) > luft || anim.GetFloat ("Speed") !=0 || anim.GetFloat ("StrafeSpeed") != 0){
 			isPlayRot = true;
 		}
 		if (isPlayRot == true && PlayerJump == false) {
@@ -173,14 +176,14 @@ public class IKanims : MonoBehaviour {
 		anim.SetLookAtWeight (lookIKweight, bodyWeight, headWeight, eyesWeight, clampWeight);
 		anim.SetLookAtPosition (targetPos.position);
 
-		leftFootWeight = anim.GetFloat ("LeftFoot");
+		//leftFootWeight = anim.GetFloat ("LeftFoot");
 		anim.SetIKPositionWeight (AvatarIKGoal.LeftFoot, leftFootWeight);
 		anim.SetIKPosition(AvatarIKGoal.LeftFoot, leftFootPos);
 
 		anim.SetIKRotationWeight (AvatarIKGoal.LeftFoot, leftFootWeight);
 		anim.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootRot);
 
-		rightFootWeight = anim.GetFloat ("RightFoot");
+		//rightFootWeight = anim.GetFloat ("RightFoot");
 		anim.SetIKPositionWeight (AvatarIKGoal.RightFoot, rightFootWeight);
 		anim.SetIKPosition(AvatarIKGoal.RightFoot, rightFootPos);
 

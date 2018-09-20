@@ -15,6 +15,7 @@ public class CameraRotateAround : MonoBehaviour {
 
 	public float xSpeed = 200.0f;
 	public float ySpeed = 200.0f;
+	public float SpeedToTarget = 5f;
 
 	public int yMinLimit = -80;
 	public int yMaxLimit = 80;
@@ -115,6 +116,7 @@ public class CameraRotateAround : MonoBehaviour {
 
 		transform.rotation = rotation;
 		transform.position = position;
+		//Vector3.Lerp(transform.position, position, Time.deltaTime * SpeedToTarget);
 	}
 
 	private static float ClampAngle (float angle, float min, float max)

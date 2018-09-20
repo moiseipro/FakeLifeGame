@@ -7,6 +7,7 @@ public class Magic : MonoBehaviour {
 	Animator anim;
 	public GameObject[] Rune;
 	public GameObject[] Spell;
+	public GameObject RightHand;
 	public int SpellID;
 	public float CastTime = 2.1f;
 	public bool MoveCast;
@@ -47,7 +48,7 @@ public class Magic : MonoBehaviour {
 		if (ID == 1)
 			Instantiate (Rune [0], transform.position, Rune [0].transform.rotation);
 		else if (ID == 2) {
-			GameObject FireBall = Instantiate (Spell [0], transform.position + GameObject.Find("Main Camera").transform.forward + Vector3.up, GameObject.Find("Main Camera").transform.rotation);
+			GameObject FireBall = Instantiate (Spell [0], RightHand.transform.position, GameObject.Find("Main Camera").transform.rotation);
 			FireBall.GetComponent<Rigidbody> ().AddForce ((FireBall.transform.forward + Vector3.up*0.2f) * 10f, ForceMode.Impulse);
 		}
 		MoveCast = false;
