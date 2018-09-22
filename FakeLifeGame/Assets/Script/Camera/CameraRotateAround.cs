@@ -33,7 +33,7 @@ public class CameraRotateAround : MonoBehaviour {
 	private float desiredDistance;
 	private float correctedDistance;
 
-	public bool CameraActive;
+	public bool CameraActive = true;
 
 	void Start ()
 	{
@@ -44,6 +44,8 @@ public class CameraRotateAround : MonoBehaviour {
 		currentDistance = distance;
 		desiredDistance = distance;
 		correctedDistance = distance;
+
+		CameraActive = true;
 
 		// Создание rigidbody без вращения
 		if (GetComponent<Rigidbody>())
