@@ -12,13 +12,12 @@ public class Magic : MonoBehaviour {
 	public float CastTime = 2.1f;
 	public bool MoveCast;
 
-	public bool CastActive;
+	public bool CastActive = true;
 
 	// Use this for initialization
 	void Start () {
-
 		anim = GetComponent<Animator> ();
-
+		CastActive = true;
 	}
 	
 	// Update is called once per frame
@@ -50,6 +49,7 @@ public class Magic : MonoBehaviour {
 		else if (ID == 2) {
 			GameObject FireBall = Instantiate (Spell [0], RightHand.transform.position, GameObject.Find("Main Camera").transform.rotation);
 			FireBall.GetComponent<Rigidbody> ().AddForce ((FireBall.transform.forward + Vector3.up*0.2f) * 10f, ForceMode.Impulse);
+			GameObject.Destroy (FireBall, 5f);
 		}
 		MoveCast = false;
 		anim.SetInteger ("Cast", 0);

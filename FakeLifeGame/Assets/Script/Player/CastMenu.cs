@@ -5,6 +5,7 @@ using UnityEngine;
 public class CastMenu : MonoBehaviour {
 
 	GameObject SpellPanel;
+	GameObject SpellChanger;
 	public GameObject Player;
 	public GameObject Camera;
 
@@ -13,26 +14,52 @@ public class CastMenu : MonoBehaviour {
 	public int BotLeftSpellID;
 	public int BotRightSpellID;
 
-
+	bool SpellChangerActive = false;
 
 	// Use this for initialization
 	void Start () {
 		SpellPanel = GameObject.Find ("SpellPanel");
+		SpellChanger = GameObject.Find ("SpellChanger");
+		SpellPanel.SetActive (false);
+		SpellChanger.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.Q)) {
+		if (Input.GetKeyDown (KeyCode.Q) && SpellChangerActive == false) {
 			SpellPanel.SetActive (true);
 			Camera.GetComponent<CameraRotateAround> ().CameraActive = false;
 			Player.GetComponent<Magic> ().CastActive = false;
 			Time.timeScale = 0.2f;
-		} else {
+		}  
+		if (Input.GetKeyUp (KeyCode.Q) && SpellChangerActive == false){
 			SpellPanel.SetActive (false);
 			Camera.GetComponent<CameraRotateAround> ().CameraActive = true;
 			Player.GetComponent<Magic> ().CastActive = true;
 			Time.timeScale = 1f;
+		}
+
+		if (Input.GetKeyDown (KeyCode.B)) {
+			if (SpellChangerActive == true) {
+				SpellChangerActive = false;
+				Camera.GetComponent<CameraRotateAround> ().CameraActive = true;
+				Player.GetComponent<Magic> ().CastActive = true;
+				SpellChanger.SetActive (false);
+				SpellPanel.SetActive (false);
+			} else {
+				SpellChangerActive = true;
+				Camera.GetComponent<CameraRotateAround> ().CameraActive = false;
+				Player.GetComponent<Magic> ().CastActive = false;
+				SpellChanger.SetActive (true);
+				SpellPanel.SetActive (true);
+			}
+		}
+
+		if (SpellChangerActive == true) {
+			
+		} else {
+			
 		}
 
 	}
