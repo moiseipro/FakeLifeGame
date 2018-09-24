@@ -7,17 +7,20 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	
 	public static GameObject itemDragged;
 	Vector3 startPos;
-	private Transform StartParent;
-	private bool Dragged;
+	public static Transform StartParent;
+	private bool Draggable;
 
 	#region IBeginDragHandler implementation
 
 	public void OnBeginDrag (PointerEventData eventData)
 	{
-		itemDragged = gameObject;
-		startPos = transform.localPosition;
-		StartParent = transform.parent;
-		GetComponent<CanvasGroup> ().blocksRaycasts = false;
+		if (Draggable == true) {
+			itemDragged = gameObject;
+			startPos = transform.localPosition;
+			StartParent = transform.parent;
+			GetComponent<CanvasGroup> ().blocksRaycasts = false;
+			GameObject.Find ("Manager").GetComponent<CastMenu> ().DragItem = true;
+		}
 	}
 
 	#endregion
@@ -26,7 +29,9 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public void OnDrag (PointerEventData eventData)
 	{
-		transform.localPosition += (Vector3)eventData.delta;
+		if (Draggable == true) {
+			transform.localPosition += (Vector3)eventData.delta/1.5f;
+		}
 	}
 
 	#endregion
@@ -35,8 +40,12 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public void OnEndDrag (PointerEventData eventData)
 	{
-		itemDragged = null;
-		GetComponent<CanvasGroup> ().blocksRaycasts = true;
+		if (Draggable == true) {
+			itemDragged = null;
+			GetComponent<CanvasGroup> ().blocksRaycasts = true;
+			GameObject.Find ("Manager").GetComponent<CastMenu> ().DragItem = false;
+
+		}
 	}
 
 	#endregion
@@ -45,7 +54,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		if (transform.parent == StartParent && itemDragged == null) {
 			transform.localPosition = Vector3.Lerp (transform.localPosition, startPos, Time.deltaTime * 20f);
 		}
+		if (Input.GetKey (KeyCode.Q) && GameObject.Find ("Manager").GetComponent<CastMenu> ().SpellChangerActive == false) {
+			Draggable = false;
+		} else {
+			Draggable = true;
+		}
 	}
-
 
 }

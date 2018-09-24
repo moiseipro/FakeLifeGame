@@ -9,7 +9,7 @@ public class Magic : MonoBehaviour {
 	public GameObject[] Spell;
 	public GameObject RightHand;
 	public int SpellID;
-	public float CastTime = 2.1f;
+	public float CastTime;
 	public bool MoveCast;
 
 	public bool CastActive = true;
@@ -22,23 +22,22 @@ public class Magic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		if ((Input.GetKeyDown (KeyCode.Mouse0))&& CastActive){
-			if (anim.GetInteger ("Cast") == 0) {
-				if(SpellID == 2) MoveCast = true;
-				else MoveCast = false;
+			if (anim.GetInteger ("Cast") == 0 && !anim.GetCurrentAnimatorStateInfo (2).IsName("MoveSpellCast") &&
+				!anim.GetCurrentAnimatorStateInfo (0).IsName("CastRune")) {
 				StartCoroutine (Cast (CastTime, SpellID));
 			}
 		}
-
-	}
-
-	void FixedUpdate(){
 		if (MoveCast) {
-			anim.SetLayerWeight (2, Mathf.Lerp (anim.GetLayerWeight (2), 1f, Time.deltaTime * 3f));
+			anim.SetLayerWeight (2, Mathf.Lerp (anim.GetLayerWeight (2), 0.9f, Time.deltaTime * 3f));
 		} else {
 			anim.SetLayerWeight (2, Mathf.Lerp (anim.GetLayerWeight (2), 0f, Time.deltaTime * 3f));
 		}
+		Debug.Log ("Anim" + anim.GetCurrentAnimatorStateInfo (2).IsName("MoveSpellCast"));
+	}
+
+	void FixedUpdate(){
+		
 	}
 
 	private IEnumerator Cast(float CastTime, int ID){
@@ -51,7 +50,7 @@ public class Magic : MonoBehaviour {
 			FireBall.GetComponent<Rigidbody> ().AddForce ((FireBall.transform.forward + Vector3.up*0.2f) * 10f, ForceMode.Impulse);
 			GameObject.Destroy (FireBall, 5f);
 		}
-		MoveCast = false;
+		//MoveCast = false;
 		anim.SetInteger ("Cast", 0);
 	}
 

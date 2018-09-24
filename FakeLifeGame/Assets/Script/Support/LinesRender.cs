@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spells : MonoBehaviour {
+public class LinesRender : MonoBehaviour {
 
 	public Color baseColor;
 	public Material material;
 
 	public Transform origin;
-	public Transform[] points;
-	public Color[] colors;
+	public List<Transform> points = new List<Transform>();
+	public List<Color> colors = new List<Color>();
 
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	void OnPostRender(){
@@ -34,15 +34,15 @@ public class Spells : MonoBehaviour {
 		RenderLines (points, colors);
 	}
 
-	void RenderLines(Transform[] points, Color[] colors){
+	void RenderLines(List<Transform> points, List<Color> colors){
 		if (!CorrectValues (points, colors)) {
 			return;
 		}
-			
+
 		GL.Begin (GL.LINES);
 		material.SetPass(0);
 
-		for (int i = 0; i < points.Length; i++) {
+		for (int i = 0; i < points.Count; i++) {
 			GL.Color (baseColor);
 			GL.Vertex (origin.position);
 			GL.Color (colors[i]);
@@ -54,8 +54,8 @@ public class Spells : MonoBehaviour {
 
 	}
 
-	private bool CorrectValues (Transform[] points, Color[] colors){
-		return points != null && colors != null && points.Length == colors.Length;
+	private bool CorrectValues (List<Transform> points, List<Color> colors){
+		return points != null && colors != null && points.Count == colors.Count;
 	}
 
 }
