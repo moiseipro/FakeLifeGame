@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
+<<<<<<< HEAD
   productGUID: 4307b767ea41876408b47eb6dadbfc1c
+=======
+  productGUID: ba0cc3ba4a5b44e42b3667102fc3cffa
+>>>>>>> 4ff16f330dc8a26b4e76372157ef3980a2fc3b05
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -609,7 +613,7 @@ PlayerSettings:
   webGLCompressionFormat: 1
   webGLLinkerTarget: 0
   scriptingDefineSymbols:
-    1: CROSS_PLATFORM_INPUT;UNITY_POST_PROCESSING_STACK_V2
+    1: CROSS_PLATFORM_INPUT;UNITY_POST_PROCESSING_STACK_V2;GAIA_PRESENT
     2: CROSS_PLATFORM_INPUT
     4: CROSS_PLATFORM_INPUT;MOBILE_INPUT;UNITY_POST_PROCESSING_STACK_V2
     7: CROSS_PLATFORM_INPUT;MOBILE_INPUT;UNITY_POST_PROCESSING_STACK_V2
