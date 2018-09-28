@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Shootable
   - InfoPanel
+  - Water
+  - Horse
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Animal
   - 
   - 
   - 
