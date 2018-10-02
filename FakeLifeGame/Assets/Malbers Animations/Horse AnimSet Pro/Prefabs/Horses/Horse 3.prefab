@@ -394,7 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   GroundLayer:
-    serializedVersion: 2
     m_Bits: 1
   Tracks: {fileID: 198000013136168986, guid: 70fe502b33f22f9458eee8b3c5b3925b, type: 2}
   Dust: {fileID: 198000010737321038, guid: f0e05868b149bf947969b4825ba90440, type: 2}
@@ -423,7 +422,11 @@ MonoBehaviour:
   multiplier: 2.3
   debug: 1
   debugSize: 0.03
-  DebugColor: {r: 0.9607844, g: 0.6431373, b: 0.20000002, a: 1}
+  DebugColor:
+    r: 0.9607844
+    g: 0.6431373
+    b: 0.20000002
+    a: 1
   drawRay: 1
 --- !u!114 &11430042
 MonoBehaviour:
@@ -506,8 +509,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 0
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnDismounted:
     m_PersistentCalls:
       m_Calls:
@@ -533,8 +536,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   ShowLinks: 1
   ShowAnimatorSpeeds: 0
   ShowEvents: 1
@@ -553,7 +556,11 @@ MonoBehaviour:
   multiplier: 2.3
   debug: 1
   debugSize: 0.03
-  DebugColor: {r: 0.9607844, g: 0.6431373, b: 0.20000002, a: 1}
+  DebugColor:
+    r: 0.9607844
+    g: 0.6431373
+    b: 0.20000002
+    a: 1
   drawRay: 1
 --- !u!114 &11465394
 MonoBehaviour:
@@ -637,7 +644,11 @@ MonoBehaviour:
   multiplier: 1.25
   debug: 1
   debugSize: 0.06
-  DebugColor: {r: 0, g: 0.6689658, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.6689658
+    b: 1
+    a: 1
   drawRay: 1
 --- !u!1001 &100100000
 Prefab:
@@ -2651,7 +2662,11 @@ MonoBehaviour:
   gizmoType: 1
   alpha: 0.4
   debugSize: 0.02
-  DebugColor: {r: 0, g: 1, b: 0, a: 1}
+  DebugColor:
+    r: 0
+    g: 1
+    b: 0
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114000011033003930
@@ -2695,7 +2710,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.4
   debugSize: 0.05
-  DebugColor: {r: 1, g: 0, b: 0, a: 1}
+  DebugColor:
+    r: 1
+    g: 0
+    b: 0
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114000012664161460
@@ -2713,7 +2732,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.4
   debugSize: 0.06
-  DebugColor: {r: 0, g: 1, b: 0, a: 1}
+  DebugColor:
+    r: 0
+    g: 1
+    b: 0
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114000012882484296
@@ -2744,7 +2767,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.4
   debugSize: 0.06
-  DebugColor: {r: 0, g: 0.54482746, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.54482746
+    b: 1
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114000013224625246
@@ -2762,7 +2789,11 @@ MonoBehaviour:
   gizmoType: 1
   alpha: 0.4
   debugSize: 0.02
-  DebugColor: {r: 0, g: 0.54482746, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.54482746
+    b: 1
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114000013403296120
@@ -2793,7 +2824,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.22
   debugSize: 0.03
-  DebugColor: {r: 0, g: 0.91724133, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.91724133
+    b: 1
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114021606392700032
@@ -2811,7 +2846,11 @@ MonoBehaviour:
   damageMultiplier: 1
   PushForce: 0
   debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
+  DebugColor:
+    r: 1
+    g: 0.25
+    b: 0
+    a: 0.15
 --- !u!114 &114043655732155920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2828,7 +2867,6 @@ MonoBehaviour:
   JumpHeightMultiplier: 0
   AirForwardMultiplier: 0
   GroundLayer:
-    serializedVersion: 2
     m_Bits: 1
   StartSpeed: 3
   height: 1.295
@@ -2918,13 +2956,13 @@ MonoBehaviour:
   OnJump:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnGetDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -2933,18 +2971,18 @@ MonoBehaviour:
   OnDeathE:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnAction:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnSwim:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnFly:
     m_PersistentCalls:
       m_Calls: []
@@ -2953,8 +2991,8 @@ MonoBehaviour:
   OnUnderWater:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnAnimationChange:
     m_PersistentCalls:
       m_Calls: []
@@ -2963,8 +3001,8 @@ MonoBehaviour:
   OnSyncAnimator:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   FrameCounter: 0
   CurrentAnimState: 0
   NextAnimState: 0
@@ -2991,7 +3029,11 @@ MonoBehaviour:
   damageMultiplier: 1
   PushForce: 0
   debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
+  DebugColor:
+    r: 1
+    g: 0.25
+    b: 0
+    a: 0.15
 --- !u!114 &114186652181856720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3007,7 +3049,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.22
   debugSize: 0.03
-  DebugColor: {r: 0, g: 0.91724133, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.91724133
+    b: 1
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114207453441572022
@@ -3025,7 +3071,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.01
   debugSize: 0.03
-  DebugColor: {r: 1, g: 1, b: 1, a: 0.266}
+  DebugColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.266
   DrawAxis: 0
   AxisSize: 0.2
 --- !u!114 &114234456883707232
@@ -3100,7 +3150,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.01
   debugSize: 0.03
-  DebugColor: {r: 1, g: 1, b: 1, a: 0.266}
+  DebugColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.266
   DrawAxis: 0
   AxisSize: 0.2
 --- !u!114 &114369679951398516
@@ -3146,7 +3200,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.01
   debugSize: 0.03
-  DebugColor: {r: 1, g: 1, b: 1, a: 0.266}
+  DebugColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.266
   DrawAxis: 0
   AxisSize: 0.2
 --- !u!114 &114475460629538594
@@ -3239,7 +3297,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.01
   debugSize: 0.03
-  DebugColor: {r: 1, g: 1, b: 1, a: 0.266}
+  DebugColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.266
   DrawAxis: 0
   AxisSize: 0.2
 --- !u!114 &114557147787091324
@@ -3257,7 +3319,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.22
   debugSize: 0.03
-  DebugColor: {r: 0, g: 0.91724133, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.91724133
+    b: 1
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114809318321975244
@@ -3275,7 +3341,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.01
   debugSize: 0.03
-  DebugColor: {r: 1, g: 1, b: 1, a: 0.266}
+  DebugColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.266
   DrawAxis: 0
   AxisSize: 0.2
 --- !u!114 &114839648990141330
@@ -3307,7 +3377,11 @@ MonoBehaviour:
   gizmoType: 0
   alpha: 0.22
   debugSize: 0.03
-  DebugColor: {r: 0, g: 0.91724133, b: 1, a: 1}
+  DebugColor:
+    r: 0
+    g: 0.91724133
+    b: 1
+    a: 1
   DrawAxis: 0
   AxisSize: 0.3
 --- !u!114 &114964022566895178
