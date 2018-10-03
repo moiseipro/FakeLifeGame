@@ -10,6 +10,7 @@ public class DoorScript : MonoBehaviour {
     private Quaternion doorOpen = Quaternion.identity;
     private Quaternion doorClose = Quaternion.identity;
     private Transform playerTrans = null;
+
     public bool doorStatus = false; //false is close, true is open
     private bool doorGo = false; //for Coroutine, when start only one
     void Start()
@@ -23,6 +24,7 @@ public class DoorScript : MonoBehaviour {
     }
     void Update()
     {
+
         //Calculate distance between player and door
         if (Vector3.Distance(playerTrans.position, this.transform.position) > doorRangeClose)
         {

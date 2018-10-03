@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: fc69ead695e85f84f8b18c3408954acd
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: body
+    100002: challenger_beard
+    100004: challenger_eyes_refl
+    100006: challenger_eyes_refl2
+    100008: challenger_eyes_refl_1
+    100010: challenger_hair
+    100012: challenger_head
+    100014: challenger_helm
+    100016: challenger_teeth
+    100018: challenger_tongue
+    100020: challenger_torso
+    100022: cloth
+    100024: //RootNode
+    400000: body
+    400002: challenger_beard
+    400004: challenger_eyes_refl
+    400006: challenger_eyes_refl2
+    400008: challenger_eyes_refl_1
+    400010: challenger_hair
+    400012: challenger_head
+    400014: challenger_helm
+    400016: challenger_teeth
+    400018: challenger_tongue
+    400020: challenger_torso
+    400022: cloth
+    400024: //RootNode
+    2100000: knight
+    2100002: wire_204204204
+    2100004: cloth
+    2100006: bodyMat
+    2100008: challenger_beardMat
+    2100010: challenger_eyes_reflMat
+    2100012: challenger_eyes_refl2Mat
+    2100014: challenger_eyes_refl_1Mat
+    2100016: challenger_hairMat
+    2100018: challenger_headMat
+    2100020: challenger_helmMat
+    2100022: challenger_teethMat
+    2100024: challenger_tongueMat
+    2100026: challenger_torsoMat
+    2100028: clothMat
+    2300000: body
+    2300002: challenger_beard
+    2300004: challenger_eyes_refl
+    2300006: challenger_eyes_refl2
+    2300008: challenger_eyes_refl_1
+    2300010: challenger_hair
+    2300012: challenger_head
+    2300014: challenger_helm
+    2300016: challenger_teeth
+    2300018: challenger_tongue
+    2300020: challenger_torso
+    2300022: cloth
+    3300000: body
+    3300002: challenger_beard
+    3300004: challenger_eyes_refl
+    3300006: challenger_eyes_refl2
+    3300008: challenger_eyes_refl_1
+    3300010: challenger_hair
+    3300012: challenger_head
+    3300014: challenger_helm
+    3300016: challenger_teeth
+    3300018: challenger_tongue
+    3300020: challenger_torso
+    3300022: cloth
+    4300000: body
+    4300002: challenger_beard
+    4300004: challenger_eyes_refl
+    4300006: challenger_eyes_refl2
+    4300008: challenger_eyes_refl_1
+    4300010: challenger_hair
+    4300012: challenger_head
+    4300014: challenger_helm
+    4300016: challenger_teeth
+    4300018: challenger_tongue
+    4300020: challenger_torso
+    4300022: cloth
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
